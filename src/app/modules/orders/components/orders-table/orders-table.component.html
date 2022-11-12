@@ -1,0 +1,26 @@
+<div class="container">
+    <table class="table">
+        <thead class="t-header">
+            <tr>
+                <th *ngFor="let name of header">{{name}}</th>
+            </tr>
+        </thead>
+        <tbody class="t-body">
+            <tr *ngFor="let order of orders">
+                <!-- {{order|json}} -->
+                <td>{{order.UserId}}</td>
+                <td>{{order.OrderId}}</td>
+                <td>
+                    <div *ngFor="let Product of order.Products" style="display: flex;justify-content: space-evenly;">
+                        <td> Product : </td>
+                        <td>{{ getProductName(Product.ProductId) }}</td>
+                        <td> Quantity : </td>
+                        <td>{{ Product.Quantity }}</td>
+                    </div>
+                </td>
+                <td>{{totalOrderPrice(order.Products)}}</td>
+                <td>{{order.PaymentType}}</td>
+            </tr>
+        </tbody>
+</table>
+</div>
