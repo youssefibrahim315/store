@@ -1,0 +1,93 @@
+.make-orders-btn {
+    display: flex;
+    cursor: pointer;
+    font-size: larger;
+    justify-content: flex-end;
+    margin-block-start: 20px;
+
+    .link {
+        color: red;
+        background-color: black;
+        margin-inline-end: 30px;
+        border-radius: 20px;
+        padding: 5px;
+        text-decoration: none;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .is-few-quantity {
+        background-color: #b3b3b3;
+    }
+
+    .card {
+        position: relative;
+        padding: 10px;
+        border-radius: 20px;
+        width: 380px;
+        height: 330px;
+        margin-top: 10px;
+
+        .cart {
+            position: absolute;
+            background-color: yellow;
+            font-size: medium;
+            border-radius: 20px;
+            overflow: hidden;
+            right: 0;
+            margin-inline-end: 30px;
+            margin-block-start: 10px;
+            color: red;
+            border: none;
+            cursor: pointer;
+
+        }
+
+        .isExist {
+            background-color: red;
+            color: green;
+        }
+
+        a {
+            // cursor: pointer;
+
+            img {
+                min-height: 250px;
+                max-height: 250px;
+                border-radius: 20px;
+            }
+        }
+
+        .card-body {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 5px;
+
+            .card-name {
+                margin: 0px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+
+            .card-price {
+                margin: 0px;
+                color: red;
+            }
+        }
+
+        .card-footer {
+            .quantity {
+                width: 50px;
+                border: none;
+            }
+        }
+    }
+}

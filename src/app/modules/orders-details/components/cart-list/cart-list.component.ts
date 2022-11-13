@@ -1,23 +1,38 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { rout } from 'src/app/core/config/routes';
+import { order, orderDetails } from 'src/app/modules/orders/models/order.interface';
 import { product } from 'src/app/modules/products/models/product.interface';
-import { order, orderDetails } from '../../models/order.interface';
+import { ProductsService } from 'src/app/modules/products/services/products.service';
 
 @Component({
-  selector: 'app-orders-table',
-  templateUrl: './orders-table.component.html',
-  styleUrls: ['./orders-table.component.scss']
+  selector: 'app-cart-list',
+  templateUrl: './cart-list.component.html',
+  styleUrls: ['./cart-list.component.scss']
 })
-export class OrdersTableComponent implements OnInit {
-
-  @Input() orders: order[] = [];
-  @Input() products: product[] = [];
-  rout = rout;
-  header: string[] = ["UserId", "OrderId", "Products", "total price", "PaymentType", "Details"]
-  constructor() { }
+export class CartListComponent implements OnInit {
+  @Input() order: order={
+    OrderDate: '',
+    UserId: '',
+    Products: [],
+    PaymentType: 'online'
+  };
+  products!: product[];
+  constructor(public ProductsService: ProductsService) { }
 
   ngOnInit(): void {
+  }
+  cartProduct(product: product) {
+    let isExist = this.ProductsService.cart.value.find(item => item.ProductId == product.ProductId)
+    if (isExist) {
+      let index = this.ProductsService.cart.value.indexOf(product);
+      this.ProductsService.cart.value.splice(index, 1)
+    } else {
+      this.ProductsService.cart.value.push(product);
+    }
+  }
+
+  inCart(product: product): boolean {
+    let isExist = this.ProductsService.cart.value.find(item => item.ProductId == product.ProductId)
+    return isExist ? true : false;
   }
 
   totalOrderPrice(orderDetails: orderDetails[]) {
@@ -39,6 +54,7 @@ export class OrdersTableComponent implements OnInit {
       }
     });
   }
+  getUserName(UserId: string) { }
   prepareDataBeforeSum(productsOrder: any) {
     return productsOrder.filter((item: any) => item.ProductName.length > 0 && item !== undefined)
   }

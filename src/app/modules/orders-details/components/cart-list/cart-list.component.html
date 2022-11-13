@@ -1,0 +1,25 @@
+<ng-container>
+<div class="container" *ngIf="order">
+    <table class="table">
+        <thead class="t-header">
+            <tr>
+                <th>User</th>
+                <th>OrderId</th>
+                <th>Products</th>
+                <th>PaymentType</th>
+            </tr>
+        </thead>
+        <tbody class="t-body">
+            <tr>
+                <td>{{order.UserId}}</td>
+                <td>{{order.OrderId}}</td>
+
+                <td >
+                    {{ order.Products|json }}
+                </td>
+                <td>{{order.PaymentType}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</ng-container>
