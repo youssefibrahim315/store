@@ -8,7 +8,7 @@ import { ProductsService } from 'src/app/modules/products/services/products.serv
   templateUrl: './cart-list.component.html',
   styleUrls: ['./cart-list.component.scss']
 })
-export class CartListComponent implements OnInit {
+export class CartListComponent {
   @Input() order: order={
     OrderDate: '',
     UserId: '',
@@ -18,8 +18,6 @@ export class CartListComponent implements OnInit {
   products!: product[];
   constructor(public ProductsService: ProductsService) { }
 
-  ngOnInit(): void {
-  }
   cartProduct(product: product) {
     let isExist = this.ProductsService.cart.value.find(item => item.ProductId == product.ProductId)
     if (isExist) {
