@@ -1,20 +1,20 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { rout } from 'src/app/core/config/routes';
-import { product } from '../../models/product.interface';
-import { ProductsService } from '../../services/products.service';
-@Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
-})
+import { order } from 'src/app/modules/orders/models/order.interface';
+import { product } from 'src/app/modules/products/models/product.interface';
+import { ProductsService } from 'src/app/modules/products/services/products.service';
 
-export class ProductListComponent implements OnInit {
+@Component({
+  selector: 'app-order',
+  templateUrl: './order.component.html',
+  styleUrls: ['./order.component.scss']
+})
+export class OrderComponent implements OnInit {
   private subscriptions: Subscription = new Subscription();
-  rout = rout ;
-  @Input() products: product[] = []
-  productForm: FormGroup = new FormGroup({});
+  // rout = rout;
+  products: product[] = this.ProductsService.cart.value
+  orderForm: FormGroup = new FormGroup({});
   cart: product[] = this.ProductsService.cart.value;
   constructor(private ProductsService: ProductsService, private fb: FormBuilder) {
   }
@@ -27,10 +27,10 @@ export class ProductListComponent implements OnInit {
 
     this.prepareDataBeforePost(event.target.value, product)
 
-    if (this.productForm.invalid) {
+    if (this.orderForm.invalid) {
       return
     }
-    let body = { ...this.productForm.value }
+    let body = { ...this.orderForm.value }
 
     this.subscriptions.add(
       this.ProductsService.editProductQuantity(body.ProductId, body.AvailablePieces).subscribe(
@@ -44,7 +44,7 @@ export class ProductListComponent implements OnInit {
 
   }
   prepareDataBeforePost(quantity: number, product: product) {
-    this.productForm.patchValue({
+    this.orderForm.patchValue({
       ProductId: quantity,
       AvailablePieces: product.AvailablePieces
     })
@@ -71,9 +71,13 @@ export class ProductListComponent implements OnInit {
     return isExist ? true : false;
   }
   initForm() {
-    this.productForm = this.fb.group({
+    this.orderForm = this.fb.group({
       ProductId: [''],
-      AvailablePieces: ['']
+      OrderDate: [''],
+      UserId: [''],
+      Products: [''],
+      Quantity: [''],
+      PaymentType: "Cash"
     })
   }
 

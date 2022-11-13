@@ -1,8 +1,15 @@
 .nav {
+    .isActive {
+        background-color: rgb(219, 115, 115);
+        color: white;
+        font-size: larger;
+    }
+
     background-color: antiquewhite;
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
+
     a {
         font-size: 15px;
         text-decoration: none;

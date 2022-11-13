@@ -20,6 +20,7 @@
                 </td>
                 <td>{{totalOrderPrice(order.Products)}}</td>
                 <td>{{order.PaymentType}}</td>
+                <td><a class="link" [routerLink]="['/'+'ordersDetails', order.OrderId]">Order Detail</a></td>
             </tr>
         </tbody>
 </table>

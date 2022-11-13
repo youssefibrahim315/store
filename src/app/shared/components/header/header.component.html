@@ -1,5 +1,5 @@
 <header>
     <nav class="nav">
-        <a  *ngFor="let page of pages" [routerLink]="page.src">{{page.name}}</a>
+        <a  *ngFor="let page of pages" [routerLink]="page.src" routerLinkActive="isActive">{{page.name}}</a>
     </nav>
 </header>

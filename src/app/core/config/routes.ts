@@ -6,8 +6,9 @@ export const rout = {
     webSite: {
         home: 'home',
         orders: 'orders',
-        ordersDetails: 'ordersDetails',
-        
+        ordersDetails: 'ordersDetails/:orderId',
+        order: 'order',
+
     },
     Api: {
         products: {
@@ -21,7 +22,12 @@ export const rout = {
             Create: '/orders.json',
             Update: '/orders.json',
             Delete: '/orders.json',
-
+        },
+        customers: {
+            List: "/users.json",
+            Create: '/users.json',
+            Update: '/users.json',
+            Delete: '/users.json',
         },
     },
 };
