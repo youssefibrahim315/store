@@ -3,26 +3,17 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { baseURL, rout } from 'src/app/core/config/routes';
 import { HttpService } from 'src/app/shared/services/http.service';
-import { order } from '../models/order.interface';
+import { user } from '../models/user.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class OrdersService {
+export class CustomerService {
 
   constructor(private http: HttpService) { }
-  getOrders(): Observable<order[]> {
-    const url = baseURL + rout.Api.orders.List
+  getUsers(): Observable<user[]> {
+    const url = baseURL + rout.Api.customers.List
     return this.http.createGetRequest(url).pipe(catchError(this.handleError))
-  }
-  getOrder(orderId: number):Observable<order> {
-    const url = `${baseURL}${rout.Api.orders.List}/${orderId}`
-    return this.http.createGetRequest(url).pipe(catchError(this.handleError))
-  }
-
-  addOrder(order: order):Observable<order>  {
-    const url = `${baseURL}${rout.Api.orders.Create}`
-    return this.http.createPostRequest(url, order).pipe(catchError(this.handleError))
   }
   private handleError(errResponse: HttpErrorResponse) {
     return throwError(errResponse.status);

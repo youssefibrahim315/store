@@ -3,3 +3,40 @@ body {
     margin: 0px;
     padding: 0px;
 }
+
+.container {
+    width: 100%;
+
+    .table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        overflow-y: scroll;
+        text-align: center;
+
+        .t-header {
+
+            td,
+            th {
+                border: 1px solid #dddddd;
+                // text-align: left;
+                padding: 8px;
+            }
+        }
+
+        .t-body {
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+
+            .link {
+                color: red;
+                // background-image:linear-gradient(red,green,blue,yellow);
+                margin-inline-end: 30px;
+                border-radius: 20px;
+                padding: 5px;
+                text-decoration: none;
+            }
+        }
+    }
+}

@@ -1,5 +1,4 @@
-<form [formGroup]="productForm">
-    <div class="make-orders-btn"><a class="link" [routerLink]="['/'+rout.webSite.order]">make orders</a></div>
+<!-- <form [formGroup]="orderForm"> -->
     <div class="container">
         <div class="card" [ngClass]="product.AvailablePieces<5?'is-few-quantity':''" *ngFor="let product of products">
             <button class="cart" [ngClass]="inCart(product)?'isExist':''" (click)="cartProduct(product)">Add To
@@ -10,11 +9,11 @@
                 <h4 class="card-price">{{product.ProductPrice}} $</h4>
             </div>
             <div class="card-footer">
-                <div>instock :
-                    <input type="number" [value]="product.AvailablePieces"
+                <div>quantity :
+                    <input type="number" formControlName ="Quantity"
                         (change)="editProductQuantity($event,product)" name="quantity" class="quantity" id="quantity">
                 </div>
             </div>
         </div>
     </div>
-</form>
+<!-- </form> -->
