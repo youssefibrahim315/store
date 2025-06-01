@@ -1,0 +1,23 @@
+<div class="container-fluid vh-100 d-flex align-items-center justify-content-center bg-light">
+  <div class="row box shadow rounded overflow-hidden w-100">
+    
+    <!-- Left image side (hidden on small devices) -->
+    <div class="col-md-6 d-none d-md-block p-0">
+      <img src="./assets/login.jpg" alt="Login visual" class="img-fluid h-100 w-100 object-fit-cover">
+    </div>
+
+    <!-- Login form side -->
+    <div class="col-12 col-md-6 bg-white p-4 d-flex flex-column justify-content-center">
+      <h2 class="mb-4 text-center">Welcome Back</h2>
+
+      <form [formGroup]="form" (ngSubmit)="submit()" class="d-flex flex-column gap-3">
+        <app-input-text [class]="'w-100'" type="text" formControlName="username" placeholder="Email"></app-input-text>
+
+        <app-input-text [class]="'w-100'" formControlName="password" type="password"
+          placeholder="Enter your password"></app-input-text>
+
+        <app-button [label]="'Login'" type="submit" color="warn" [class]="'w-100 bg-primary p-2'" (click)="submit()"/>
+      </form>
+    </div>
+  </div>
+</div>

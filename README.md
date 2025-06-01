@@ -1,3 +1,13 @@
+# Run server 
+json-server --watch ./data/db.json --port 4000
+
+# Run code
+ng s
+
+# NGRX for Store
+config files in Core Module and its imports in appConfig
+# ControlValueAccessor
+
 # Store
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
